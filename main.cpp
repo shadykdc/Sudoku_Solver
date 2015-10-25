@@ -46,7 +46,7 @@ int main() {
 	display_board(board);
 
 	// write more tests
-	cout << "Putting '5' into I8 is ";
+	cout << "Putting '5' into A1 is ";
 	if (!make_move("A1", '1', board))
 		cout << "NOT ";
 	cout << "a valid move. The board is:" << endl;
@@ -73,12 +73,6 @@ int main() {
 	
 	cout << "Putting '5' into G9 is ";
 	if (!make_move("G9", '5', board))
-		cout << "NOT ";
-	cout << "a valid move. The board is:" << endl;
-	display_board(board);
-	
-	cout << "Putting '0' into J1 is ";
-	if (!make_move("I8", '1', board))
 		cout << "NOT ";
 	cout << "a valid move. The board is:" << endl;
 	display_board(board);
