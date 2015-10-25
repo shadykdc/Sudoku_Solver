@@ -171,8 +171,8 @@ bool solve_board(char board[][9])
 				{
 					if(!solve_board(board))				// solve the new board
 					{
-						board[i-65][j-49] = '.';		// if the new board is false,
-					}									// set last try back to blank
+						board[i-65][j-49] = '.';		// if the new board is false, set last try back to blank
+					}
 					else
 					{
 						return true;					// the board is complete!
