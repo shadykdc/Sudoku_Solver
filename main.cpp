@@ -45,7 +45,7 @@ int main() {
 
 	// write more tests
 	cout << "Putting '5' into A1 is ";
-	if (!make_move("A1", '1', board))
+	if (!make_move("A1", '5', board))
 		cout << "NOT ";
 	cout << "a valid move. The board is:" << endl;
 	display_board(board);
