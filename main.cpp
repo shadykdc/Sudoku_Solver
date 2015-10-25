@@ -1,5 +1,3 @@
-//	KS815; Kathryn Shea; MSc Computing; Lab Exercise 1; Nov 2, 2015
-
 #include <iostream>
 #include <cstdio>
 #include "sudoku.h"
@@ -47,38 +45,50 @@ int main() {
 
 	// write more tests
 	cout << "Putting '5' into A1 is ";
-	if (!make_move("A1", '1', board))
+	if (!make_move("A1", '5', board))
 		cout << "NOT ";
 	cout << "a valid move. The board is:" << endl;
 	display_board(board);
 	
-	// Should not be OK
+	// should not be OK
+	// 1 is already in that row
 	cout << "Putting '1' into A3 is ";
 	if (!make_move("A3", '1', board))
 		cout << "NOT ";
 	cout << "a valid move. The board is:" << endl;
 	display_board(board);
 	
+	// digit is not valid
 	cout << "Putting '0' into C1 is ";
 	if (!make_move("C1", '0', board))
 		cout << "NOT ";
 	cout << "a valid move. The board is:" << endl;
 	display_board(board);
 	
+	// position is not valid
 	cout << "Putting '1' into J1 is ";
 	if (!make_move("J1", '1', board))
 		cout << "NOT ";
 	cout << "a valid move. The board is:" << endl;
 	display_board(board);
 	
+	// 5 is already in that box
 	cout << "Putting '5' into G9 is ";
 	if (!make_move("G9", '5', board))
 		cout << "NOT ";
 	cout << "a valid move. The board is:" << endl;
 	display_board(board);
 	
+	// 2 is already in that column
 	cout << "Putting '2' into G3 is ";
 	if (!make_move("G3", '2', board))
+		cout << "NOT ";
+	cout << "a valid move. The board is:" << endl;
+	display_board(board);
+	
+	// that space is already occupied
+	cout << "Putting '5' into B1 is ";
+	if (!make_move("B1", '5', board))
 		cout << "NOT ";
 	cout << "a valid move. The board is:" << endl;
 	display_board(board);
