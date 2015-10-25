@@ -1,5 +1,3 @@
-//	KS815; Kathryn Shea; MSc Computing; Lab Exercise 1; Nov 2, 2015
-
 #include <iostream>
 #include <cstdio>
 #include "sudoku.h"
