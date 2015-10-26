@@ -11,69 +11,76 @@ using namespace std;
    function definitions to the end of this file. */
 
 /* pre-supplied function to load a Sudoku board from a file */
-void load_board(const char *filename, char board[9][9]) {
+void load_board(const char *filename, char board[9][9])
+{
+    cout << "Loading Sudoku board from file '" << filename << "'... ";
 
-  //cout << "Loading Sudoku board from file '" << filename << "'... ";
+    ifstream in(filename);
+    if (!in)
+        cout << "Failed!" << endl;
+    assert(in);
 
-  ifstream in(filename);
-  if (!in)
-    cout << "Failed!" << endl;
-  assert(in);
+    char buffer[512];
 
-  char buffer[512];
-
-  int row = 0;
-  in.getline(buffer,512);
-  while (in && row < 9) {
-    for (int n=0; n<9; n++) {
-      assert(buffer[n] == '.' || isdigit(buffer[n]));
-      board[row][n] = buffer[n];
-    }
-    row++;
+    int row = 0;
     in.getline(buffer,512);
-  }
+    while (in && row < 9)
+    {
+        for (int n=0; n<9; n++)
+        {
+            assert(buffer[n] == '.' || isdigit(buffer[n]));
+            board[row][n] = buffer[n];
+        }
+        row++;
+        in.getline(buffer,512);
+    }
 
-  //cout << ((row == 9) ? "Success!" : "Failed!") << endl;
-  //assert(row == 9);
+    cout << ((row == 9) ? "Success!" : "Failed!") << endl;
+    assert(row == 9);
 }
 
 /* internal helper function */
-void print_frame(int row) {
-  if (!(row % 3))
-    cout << "  +===========+===========+===========+" << endl;
-  else
-    cout << "  +---+---+---+---+---+---+---+---+---+" << endl;
+void print_frame(int row)
+{
+    if (!(row % 3))
+        cout << "  +===========+===========+===========+" << endl;
+    else
+        cout << "  +---+---+---+---+---+---+---+---+---+" << endl;
 }
 
 /* internal helper function */
-void print_row(const char *data, int row) {
-  cout << (char) ('A' + row) << " ";
-  for (int i=0; i<9; i++) {
-    cout << ( (i % 3) ? ':' : '|' ) << " ";
-    cout << ( (data[i]=='.') ? ' ' : data[i]) << " ";
-  }
-  cout << "|" << endl;
+void print_row(const char *data, int row)
+{
+    cout << (char) ('A' + row) << " ";
+    for (int i=0; i<9; i++)
+    {
+        cout << ( (i % 3) ? ':' : '|' ) << " ";
+        cout << ( (data[i]=='.') ? ' ' : data[i]) << " ";
+    }
+    cout << "|" << endl;
 }
 
 /* pre-supplied function to display a Sudoku board */
-void display_board(const char board[9][9]) {
-  cout << "    ";
-  for (int r=0; r<9; r++) 
-    cout << (char) ('1'+r) << "   ";
-  cout << endl;
-  for (int r=0; r<9; r++) {
-    print_frame(r);
-    print_row(board[r],r);
-  }
-  print_frame(9);
+void display_board(const char board[9][9])
+{
+    cout << "    ";
+    for (int r=0; r<9; r++) 
+        cout << (char) ('1'+r) << "   ";
+    cout << endl;
+    for (int r=0; r<9; r++)
+    {
+        print_frame(r);
+        print_row(board[r],r);
+    }
+    print_frame(9);
 }
 
 /* add your functions here */
 
-/* returns true if a 9x9 sudoku board called 'char board[9][9]' has been solved */
+/* returns true if a 9x9 Sudoku board, 'board', has been solved */
 bool is_complete(char board[][9])
 {
-	/* return false if there are any blanks */
+	/* return false if there are any positions without digits 1 through 9 */
 	for (int i = 0; i < 9; i++)
 		for(int j = 0; j < 9; j++)
 			if(board[i][j] < '1' || board[i][j] > '9')
@@ -84,8 +91,8 @@ bool is_complete(char board[][9])
 /* attempts to place a digit onto a Sudoku board at a given position */
 bool make_move(char position[2], char digit, char board[][9])
 {
-	int spot_row = position[0]-65; // this makes I an 8 as in board[8][7] and A would be 0.
-	int spot_col = position[1]-49; // this makes the number seven, seven (etc.).
+	int spot_row = position[0]-65; // changes char to int so A is 0.
+	int spot_col = position[1]-49; // changes char to int so char 7 is int 7.
 	
 	/* return false if digit is not between 1 and 9 */
 	if(digit < 49 || digit > 57)
@@ -158,7 +165,7 @@ bool solve_board(char board[][9])
 	{
 		for(char j = '1'; j <= '9'; j++)
 		{
-			/* skip over the boxes that are already filled in to speed up just a little */
+			/* skip over the boxes that are already filled in for speed */
 			if(board[i-65][j-49] != '.')
 				continue;
 
@@ -167,20 +174,20 @@ bool solve_board(char board[][9])
 				position[0] = i;
 				position[1] = j;
 				
-				if(make_move(position, digit, board))	// try to insert that digit in that position
+				if(make_move(position, digit, board))  // try to insert that digit in that position
 				{
-					if(!solve_board(board))				// solve the new board
+					if(!solve_board(board))  // solve the new board
 					{
-						board[i-65][j-49] = '.';		// if the new board is false, set last try back to blank
+						board[i-65][j-49] = '.';  // if the new board is false, set last try back to blank
 					}
 					else
 					{
-						return true;					// the board is complete!
+						return true;  // the board is complete!
 					}
 				}
 				if(board[i-65][j-49] == '.' && digit == '9')
 				{
-					return(false);						// you're stuck --> return false
+					return(false);  // you're stuck --> return false
 				}		
 			}
 		}
@@ -201,7 +208,6 @@ bool exists_in_box(char digit, int spot_row, int spot_col, char board[][9])
 					return(true);
 	return(false);
 }
-
 
 /* for question 5 */
 void attempt_solve(char board[][9], int count)
