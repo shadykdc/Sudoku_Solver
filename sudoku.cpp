@@ -174,11 +174,14 @@ bool solve_board(char board[][9])
 				position[0] = i;
 				position[1] = j;
 				
-				if(make_move(position, digit, board))  // try to insert that digit in that position
+				// try to insert that digit in that position
+				if(make_move(position, digit, board)) 
 				{
-					if(!solve_board(board))  // solve the new board
+				    // solve the new board
+					if(!solve_board(board))
 					{
-						board[i-65][j-49] = '.';  // if the new board is false, set last try back to blank
+					    // if the board is false, set last try back to blank
+						board[i-65][j-49] = '.';
 					}
 					else
 					{
@@ -234,7 +237,6 @@ void attempt_solve(char board[][9], int count)
 					if(make_move(position, digit, board))
 					{
 						count++;
-						cout << "I've filled in " << count << " boxes with basic logic." << endl;
 						attempt_solve(board, count);
 					}
 				}	
@@ -292,9 +294,9 @@ bool digit_fits_in_col(char digit, int spot_row, int spot_col, char board[][9])
 
 bool possible(char position[2], char digit, char board[][9])
 {
-	/* this is basically the same as make_move() but it doesn't put the digit in */
-	int spot_row = position[0]-65; // this makes I an 8 as in board[8][7] and A would be 0.
-	int spot_col = position[1]-49; // this makes the number seven, seven (etc.).
+	/* this is similar to make_move() but it doesn't put the digit in */
+	int spot_row = position[0]-65; // makes I an 8 (board[8][7]) and A a 0.
+	int spot_col = position[1]-49; // makes the number seven, seven (etc.).
 	
 	/* return false if digit is not between 1 and 9 */
 	if(digit < 49 || digit > 57)
