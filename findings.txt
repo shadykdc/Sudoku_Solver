@@ -8,7 +8,7 @@ into that position.  My function would continue through the whole board until
 it couldn't fill in any more numbers without guessing.  My findings were as
 follows:
 
-	Easy board:		55 positions were filled in and the puzzle was solved.
+	Easy board:	55 positions were filled in and the puzzle was solved.
 	Medium board:	19 positions were filled in and the puzzle was unsolved.
 	Mystery1 board:	7 positions were filled in and the puzzle was unsolved.
 	Mystery2 board:	6 positions were filled in and the puzzle was unsolved.
