@@ -40,15 +40,15 @@ bool exists_in_box(char digit, int spot_row, int spot_col, char board[][9]);
 	
 bool digit_fits_in_col(char digit, int spot_row, int spot_col, char board[][9]);
 	/* returns true if the 'digit' fits in any other positions within
-	spot's column.  Otherwise, it returns false */
+	spot's column on 'board'.  Otherwise, it returns false */
 
 bool digit_fits_in_row(char digit, int spot_row, int spot_col, char board[][9]);
 	/* returns true if the 'digit' fits in any other positions within
-	spot's row.  Otherwise, it returns false */
+	spot's row on 'board'.  Otherwise, it returns false */
 
 bool digit_fits_in_box(char digit, int spot_row, int spot_col, char board[][9]);
 	/* returns true if the 'digit' fits in any other positions within
-	spot's 3x3 box.  Otherwise, it returns false */
+	spot's 3x3 box on 'board'.  Otherwise, it returns false */
 
 void attempt_solve(char board[][9], int count);
 	/* attempts to solve the board using very simple logic.  Fills
