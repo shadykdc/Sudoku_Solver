@@ -9,7 +9,7 @@ int main() {
 	char board[9][9];
 
 	/* This section illustrates the use of the pre-supplied helper functions. */
-	cout << "============== Pre-supplied functions ==================" << endl << endl;
+/*	cout << "============== Pre-supplied functions ==================" << endl << endl;
 
 	cout << "Calling load_board():" << endl;
 	load_board("easy.dat", board);
@@ -158,7 +158,7 @@ int main() {
 		cout << "A solution cannot be found for mystery2 board." << endl;
 	}
 	cout << endl;
-	
+*/	
 	load_board("mystery3.dat", board);
 	
 	if (solve_board(board))
@@ -171,10 +171,10 @@ int main() {
 		cout << "A solution cannot be found." << endl;
 	}
 	cout << endl;
-
+/*
 	cout << "====================== Question 5 ======================" << endl << endl;
 
-	// write more tests*/
+	// write more tests
 	load_board("easy.dat", board);
 	attempt_solve(board, 0);
 	display_board(board);
@@ -194,6 +194,6 @@ int main() {
 	load_board("mystery3.dat", board);
 	attempt_solve(board, 0);
 	display_board(board);
- 	 
+*/ 	 
 	return 0;
 }
