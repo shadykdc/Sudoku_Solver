@@ -3,8 +3,8 @@ Let this program solve your sudoku for you or tell you if it's impossible to sol
 
 Pull the code and run make in the folder with the make file.
 
-Modify any of the .dat files as necessary to match your sudoku.
+Modify any of the mystery3.dat file to match your sudoku and run:
 
-You may want to change the main.cpp a bit as well since this was originally for an assignment.
+    ./sudoku
 
 Happy solving!
