@@ -1,7 +1,7 @@
 # Sudoku_Solver
 Let this program solve your sudoku for you or tell you if it's impossible to solve.
 
-Pull the code and run make in the folder with the make file.
+Pull the code and run make in the folder with the make file (works on linux but didn't work on my mac).
 
 Modify the mystery3.dat file to match your sudoku and run:
 
